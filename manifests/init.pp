@@ -20,7 +20,7 @@ class crypt (
   $http_username = '',
   $http_password = '',
 ){
-  if $facts['os']['family'] == 'Darwin' and
+  if $facts['os']['family'] == 'Darwin' and $facts['role'] != 'buildkite' and
   ($facts['mac_laptop'] == true or munki_item_installed('Crypt') or $force_install == true){
     class {'crypt::config': }
     -> class {'crypt::install': }
